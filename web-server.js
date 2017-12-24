@@ -51,7 +51,6 @@ app.get('/add',function(req,res){
         'SELECT * FROM clients',
         function(err, rowCount, rows) {
             console.log(rowCount + ' row(s) returned');
-            console.log('rowCount2');
         }
     );
     
