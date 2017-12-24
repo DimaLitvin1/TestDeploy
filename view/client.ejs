@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        window.onload = function(){
+           var button = document.getElementById('btn');
+           button.onclick =  sendData;
+           function sendData(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST','add/Items');
+            var inputs = document.getElementsByTagName('input');
+            var item = {
+                name: inputs[0].value,
+                surname: inputs[1].value,
+                town: inputs[2].value,
+                street: inputs[3].value
+            };
+            var data = JSON.stringify(item);
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send(data);
+        } 
+    }
+    </script>
+    <form>
+        <input type="text" id = "name"><br><br>
+        <input type="text" id = "surname"><br><br>
+        <input type="text" id = "town"><br><br>
+        <input type="text" id = "street"><br><br>
+        <button id ="btn">Commit</button><br><br>
+        
+    </form>
+    <table>
+        <tbody>
+            <%- data %>
+        </tbody>
+    </table>
+</body>
+</html>
